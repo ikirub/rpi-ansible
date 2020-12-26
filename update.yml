@@ -1,0 +1,11 @@
+---
+- name: Playbook for managing updates in RPi
+  hosts: all
+  user: pi
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  tasks:
+  - name: 'Update apt package cache'
+    apt: update_cache=yes force_apt_get=yes cache_valid_time=86400 

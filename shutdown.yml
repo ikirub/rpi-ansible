@@ -1,0 +1,17 @@
+---
+- name: Playbook for shutdown RPis
+  hosts: all
+  user: pi
+  become: yes
+  become_user: root
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+  - name: Shutdown RPis
+    command: /sbin/shutdown -h now
+    ignore_errors: 'yes'
+  - name: Wait for shutdown to complete
+    local_action: wait_for host={{ ansible_host }} port=22 state=stopped
+    become: false
+  

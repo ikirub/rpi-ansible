@@ -1,0 +1,16 @@
+---
+- name: Playbook for rebooting the RPis
+  hosts: all
+  user: pi
+  become: yes
+  become_user: root
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+  - name: Reboot RPi
+    command: shutdown -r now
+    ignore_errors: yes
+  - name: Wait for reboot to complete
+    local_action: wait_for host={{ ansible_host }} port=22 state=started delay=10
+    become: false

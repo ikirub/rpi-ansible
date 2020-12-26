@@ -1,0 +1,20 @@
+---
+- name: All RPis
+  hosts: all
+  remote_user: pi
+  become: yes
+  become_user: root
+  become_method: sudo
+  
+  tasks:
+  - name: First Test
+    command: hostname
+    register: hname
+  - name: Check Rasp model
+    command: cat /proc/device-tree/model
+    register: piversion
+  - name: Debug each entry of my hosts
+    debug:
+      msg: "System {{ inventory_hostname }} is a {{ piversion.stdout }}"
+  - debug:
+      msg: "System hostname is {{ hname.stdout }}" 

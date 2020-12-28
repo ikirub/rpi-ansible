@@ -1,6 +1,6 @@
 ---
 - name: Playbook for upgrading the RPis
-  hosts: rpi0
+  hosts: all
   user: pi
   become: yes
   become_user: root

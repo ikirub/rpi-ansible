@@ -1,0 +1,22 @@
+---
+- hosts: raspberry_pi
+  user: pi
+  roles:
+    - common
+
+- hosts: armv7_pi
+  user: pi
+  roles:
+    - rpi_exporter
+    - node_exporter
+
+- hosts: armv6_pi
+  user: pi
+  roles:
+    - rpi_exporter_armv6
+    - node_exporter_armv6
+
+- hosts: monitoring_server 
+  user: pi
+  roles:
+    - monitoring_server 

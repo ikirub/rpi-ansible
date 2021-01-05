@@ -28,6 +28,17 @@ all:
     monitoring_server:
       hosts:
         rpi0: {}
+    armv6_pi:
+      hosts:
+        rpiz1: {}
+        rpiz2: {}
+    armv7_pi:
+      hosts:
+        rpi0: {}
+        rpi1: {}
+        rpi2: {}
+        rpi3: {}
+        rpi4: {}
   vars:
     ansible_python_interpreter: /usr/bin/python3
     remote_user: pi
